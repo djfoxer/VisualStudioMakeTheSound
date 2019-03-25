@@ -70,11 +70,21 @@ namespace djfoxer.VisualStudio.MakeTheSound {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Empty VSIX Project..
+        ///   Looks up a localized string similar to Make The Sound - extension for Visual Studio that add sounds for your best IDE.
         /// </summary>
         public static string _112 {
             get {
                 return ResourceManager.GetString("112", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon _400 {
+            get {
+                object obj = ResourceManager.GetObject("400", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

@@ -16,7 +16,8 @@ namespace djfoxer.VisualStudio.MakeTheSound.Player
 
         public void PlaySound(IDEEventType iDEEventType)
         {
-            SoundPlayer player = new SoundPlayer(IDEEventTypeMapper.IDEEventTypeToSoundPath(iDEEventType));
+            var path = IDEEventTypeMapper.IDEEventTypeToSoundPath(iDEEventType);
+            SoundPlayer player = new SoundPlayer(path);
             player.Play();
         }
     }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using System.Reflection;
 
 namespace djfoxer.VisualStudio.MakeTheSound.Events
 {
@@ -18,13 +15,13 @@ namespace djfoxer.VisualStudio.MakeTheSound.Events
             switch (iDEEventType)
             {
                 case IDEEventType.Unknown:
-                    path = "ohno!";
+                    path = "ohno!"; 
                     break;
                 default:
                     path = iDEEventType.ToString();
                     break;
             }
-            return $"./Audio/{path}.wav";
+            return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Audio", $"{path}.wav");
         }
 
         public static string IDEEventTypeToVSAction(IDEEventType iDEEventType)

@@ -1,7 +1,7 @@
 # <img src="https://raw.githubusercontent.com/djfoxer/VisualStudioMakeTheSound/master/djfoxer.VisualStudio.MakeTheSound/Resources/MakeTheSound.ico" width="100" height="100" /> Make The Sound
 #### Extension for Visual Studio
 
-Make The Sound is an extension for Visual Studio that adds sounds to your IDE.
+Make The Sound is an extension for Visual Studio that adds sounds to your IDE.  
 Currently extension adds audio warnings for this events:
 - save
 - save all

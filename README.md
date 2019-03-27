@@ -7,6 +7,7 @@ Currently extension adds audio warnings for this events:
 - save all (floppy disk sound effect, longer )
 - build failed (cartoon record scratch sound effect)
 
+Link to Visual Studio Marketplace: [Make The Sound](https://marketplace.visualstudio.com/items?itemName=djfoxer.MakeTheSound)  
 Feel free to add your feedback here: [Issues](https://github.com/djfoxer/VisualStudioMakeTheSound/issues)
 
 #### Changelog:

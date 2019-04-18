@@ -16,5 +16,13 @@ namespace djfoxer.VisualStudio.MakeTheSound.Events
         FileSaveAll = 2,
         [IDEEventSource(IDEEventSourceType.DteEvent)]
         BuildFails = 3,
+        [IDEEventSource(IDEEventSourceType.DteEvent)]
+        Building = 4,
+        [IDEEventSource(IDEEventSourceType.DteEvent)]
+        BuildSuccess = 5,
+        [IDEEventSource(IDEEventSourceType.DteEvent)]
+        Breakepoint = 6,
+        [IDEEventSource(IDEEventSourceType.DteEvent)]
+        Exception = 7,
     }
 }

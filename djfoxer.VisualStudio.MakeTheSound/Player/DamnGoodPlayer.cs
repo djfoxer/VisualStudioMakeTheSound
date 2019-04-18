@@ -6,6 +6,7 @@ namespace djfoxer.VisualStudio.MakeTheSound.Player
     public class DamnGoodPlayer
     {
         private static DamnGoodPlayer _instance;
+        private static SoundPlayer _player = new SoundPlayer();
 
         public static DamnGoodPlayer Instance => _instance ?? (_instance = new DamnGoodPlayer());
 
@@ -14,11 +15,24 @@ namespace djfoxer.VisualStudio.MakeTheSound.Player
 
         }
 
-        public void PlaySound(IDEEventType iDEEventType)
+        public void PlaySound(IDEEventType iDEEventType, bool loop = false)
         {
             var path = IDEEventTypeMapper.IDEEventTypeToSoundPath(iDEEventType);
-            SoundPlayer player = new SoundPlayer(path);
-            player.Play();
+            _player.Stop();
+            _player.SoundLocation = path;
+            if (loop)
+            {
+                _player.PlayLooping();
+            }
+            else
+            {
+                _player.Play();
+            }
+        }
+
+        public void StopLoop()
+        {
+            _player.Stop();
         }
     }
 }

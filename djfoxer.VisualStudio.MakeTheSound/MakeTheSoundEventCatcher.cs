@@ -18,6 +18,7 @@ namespace djfoxer.VisualStudio.MakeTheSound
         private Dictionary<string, CommandEvents> _actionCommandEvents = new Dictionary<string, CommandEvents>();
         private Events2 _events;
         private BuildEvents _buildEvents;
+        private DebuggerEvents _debuggerEvents;
         private AsyncPackage _package;
         private static MakeTheSoundEventCatcher _instance;
 
@@ -44,10 +45,13 @@ namespace djfoxer.VisualStudio.MakeTheSound
             _events = _dte.Events as Events2;
             _buildEvents = _events.BuildEvents;
             _commands = _dte.Commands;
+            _debuggerEvents = _events.DebuggerEvents;
 
             await AddActionAsync(IDEEventType.FileSaveAll);
             await AddActionAsync(IDEEventType.FileSave);
-            await AddActionAsync(IDEEventType.BuildFails);
+            await AddActionAsync(IDEEventType.Building);
+            await AddActionAsync(IDEEventType.Breakepoint);
+            await AddActionAsync(IDEEventType.Exception);
 
             return this;
         }
@@ -62,21 +66,56 @@ namespace djfoxer.VisualStudio.MakeTheSound
             }
             else if (sourceType == IDEEventSourceType.DteEvent)
             {
-                if (iDEEventType == IDEEventType.BuildFails)
+                if (iDEEventType == IDEEventType.Building)
                 {
-                    _buildEvents.OnBuildDone += BuildEvents_OnBuildDone;
+                    _buildEvents.OnBuildDone += Building_OnBuildDone;
+                    _buildEvents.OnBuildBegin += Building_OnBuildBegin;
+                }
+                else if (iDEEventType == IDEEventType.Breakepoint)
+                {
+                    _debuggerEvents.OnEnterBreakMode += DebuggerEvents_OnEnterBreakMode; ;
+                }
+                else if (iDEEventType == IDEEventType.Exception)
+                {
+                    _debuggerEvents.OnExceptionNotHandled += DebuggerEvents_OnExceptionNotHandled;
+                    _debuggerEvents.OnExceptionThrown += DebuggerEvents_OnExceptionThrown; ;
                 }
             }
         }
 
-        private void BuildEvents_OnBuildDone(vsBuildScope Scope, vsBuildAction Action)
+        private void DebuggerEvents_OnExceptionThrown(string ExceptionType, string Name, int Code, string Description, ref dbgExceptionAction ExceptionAction)
+        {
+            SetSoundForSingleEvent(IDEEventType.Exception, false);
+        }
+
+        private void DebuggerEvents_OnExceptionNotHandled(string ExceptionType, string Name, int Code, string Description, ref dbgExceptionAction ExceptionAction)
+        {
+            SetSoundForSingleEvent(IDEEventType.Exception, false);
+        }
+
+        private void DebuggerEvents_OnEnterBreakMode(dbgEventReason Reason, ref dbgExecutionAction ExecutionAction)
+        {
+            SetSoundForSingleEvent(IDEEventType.Breakepoint, false);
+        }
+
+        private void Building_OnBuildBegin(vsBuildScope Scope, vsBuildAction Action)
+        {
+            SetSoundForSingleEvent(IDEEventType.Building, true);
+        }
+
+        private void Building_OnBuildDone(vsBuildScope Scope, vsBuildAction Action)
         {
             System.Threading.Tasks.Task.Run(async () =>
             {
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                DamnGoodPlayer.Instance.StopLoop();
                 if (_dte.Solution.SolutionBuild.LastBuildInfo != 0)
                 {
                     DamnGoodPlayer.Instance.PlaySound(IDEEventType.BuildFails);
+                }
+                else
+                {
+                    DamnGoodPlayer.Instance.PlaySound(IDEEventType.BuildSuccess);
                 }
             }).ConfigureAwait(false);
         }
@@ -86,6 +125,15 @@ namespace djfoxer.VisualStudio.MakeTheSound
             return typeof(IDEEventType).GetMember(iDEEventType.ToString())
                    .First()
                    .GetCustomAttribute<IDEEventSourceAttribute>().IDEEventSourceType;
+        }
+
+        private void SetSoundForSingleEvent(IDEEventType iDEEventType, bool loop)
+        {
+            System.Threading.Tasks.Task.Run(async () =>
+            {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                DamnGoodPlayer.Instance.PlaySound(iDEEventType, loop);
+            }).ConfigureAwait(false);
         }
 
         private async System.Threading.Tasks.Task SetEventForActionAsync(IDEEventType iDEEventType)

@@ -19,8 +19,8 @@ namespace djfoxer.VisualStudio.MakeTheSound.Helper
         public const string OptionsEnableAudioBuildingText = "Enable building";
         public const string OptionsEnableAudioBuildingDescription = "Enable building sound effect";
 
-        public const string OptionsEnableAudioBuildSuccessText = "Enable build sucessed";
-        public const string OptionsEnableAudioBuildSuccessedDescription = "Enable build sucessed sound effect";
+        public const string OptionsEnableAudioBuildSuccessText = "Enable build succeeded";
+        public const string OptionsEnableAudioBuildSuccessedDescription = "Enable build succeeded sound effect";
 
         public const string OptionsEnableAudioExceptionText = "Enable exception";
         public const string OptionsEnableAudioExceptionDescription = "Enable exception sound effect";

@@ -1,4 +1,5 @@
 ﻿using djfoxer.VisualStudio.MakeTheSound.Events;
+using djfoxer.VisualStudio.MakeTheSound.Options;
 using System.Media;
 
 namespace djfoxer.VisualStudio.MakeTheSound.Player
@@ -20,13 +21,18 @@ namespace djfoxer.VisualStudio.MakeTheSound.Player
             var path = IDEEventTypeMapper.IDEEventTypeToSoundPath(iDEEventType);
             _player.Stop();
             _player.SoundLocation = path;
-            if (loop)
+
+            if (MakeTheSoundEventCatcher.Instance.OptionsPage.IsAudioActive(iDEEventType))
             {
-                _player.PlayLooping();
-            }
-            else
-            {
-                _player.Play();
+
+                if (loop)
+                {
+                    _player.PlayLooping();
+                }
+                else
+                {
+                    _player.Play();
+                }
             }
         }
 

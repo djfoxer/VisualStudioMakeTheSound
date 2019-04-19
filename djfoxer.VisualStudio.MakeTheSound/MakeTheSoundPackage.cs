@@ -7,6 +7,8 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using djfoxer.VisualStudio.MakeTheSound.Events;
+using djfoxer.VisualStudio.MakeTheSound.Helper;
+using djfoxer.VisualStudio.MakeTheSound.Options;
 using Microsoft;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.OLE.Interop;
@@ -36,15 +38,12 @@ namespace djfoxer.VisualStudio.MakeTheSound
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
-    [Guid(MakeTheSoundPackage.PackageGuidString)]
+    [Guid(Vsix.Id)]
     [ProvideAutoLoad(UIContextGuids.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
+    [ProvideOptionPage(typeof(OptionsPage), Vsix.Name, Consts.OptionSubmenu, 0, 0, true)]
 
     public sealed class MakeTheSoundPackage : AsyncPackage
     {
-        /// <summary>
-        /// MakeTheSound GUID string.
-        /// </summary>
-        public const string PackageGuidString = "cb63fe1e-356e-426d-abdf-9237436faf11";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MakeTheSoundPackage"/> class.
@@ -71,7 +70,7 @@ namespace djfoxer.VisualStudio.MakeTheSound
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            await MakeTheSoundEventCatcher.Instance.InitAsync(this);
+            await MakeTheSoundEventCatcher.Instance.InitAsync(this, (OptionsPage)GetDialogPage(typeof(OptionsPage)));
         }
 
         #endregion

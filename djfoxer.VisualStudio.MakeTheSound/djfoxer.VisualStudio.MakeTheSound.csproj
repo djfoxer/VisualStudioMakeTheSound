@@ -59,8 +59,12 @@
     <Compile Include="Events\IDEEventSourceType.cs" />
     <Compile Include="Events\IDEEventType.cs" />
     <Compile Include="Events\IDEEventTypeMapper.cs" />
+    <Compile Include="Helper\Consts.cs" />
     <Compile Include="MakeTheSoundEventCatcher.cs" />
     <Compile Include="MakeTheSoundPackage.cs" />
+    <Compile Include="Options\OptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Player\DamnGoodPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="source.extension.cs">

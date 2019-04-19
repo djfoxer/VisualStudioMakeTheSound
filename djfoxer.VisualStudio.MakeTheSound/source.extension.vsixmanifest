@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="cb63fe1e-356e-426d-abdf-9237436faf11" Version="0.1" Language="en-US" Publisher="djfoxer" />
+        <Identity Id="cb63fe1e-356e-426d-abdf-9237436faf11" Version="0.2" Language="en-US" Publisher="djfoxer" />
         <DisplayName>Make The Sound</DisplayName>
         <Description xml:space="preserve">Make The Sound is an extension for Visual Studio that adds sounds to your IDE.</Description>
         <Icon>Resources\MakeTheSound.ico</Icon>

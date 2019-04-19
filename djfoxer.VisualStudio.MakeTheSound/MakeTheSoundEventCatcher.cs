@@ -1,4 +1,5 @@
 ﻿using djfoxer.VisualStudio.MakeTheSound.Events;
+using djfoxer.VisualStudio.MakeTheSound.Options;
 using djfoxer.VisualStudio.MakeTheSound.Player;
 using EnvDTE;
 using EnvDTE80;
@@ -29,12 +30,16 @@ namespace djfoxer.VisualStudio.MakeTheSound
 
         public static MakeTheSoundEventCatcher Instance => _instance ?? (_instance = new MakeTheSoundEventCatcher());
 
-        public async Task<MakeTheSoundEventCatcher> InitAsync(AsyncPackage package)
+        public OptionsPage OptionsPage { get; private set; }
+
+        public async Task<MakeTheSoundEventCatcher> InitAsync(AsyncPackage package, OptionsPage optionsPage)
         {
             if (_package != null)
             {
                 return this;
             }
+
+            OptionsPage = optionsPage;
 
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             _package = package;

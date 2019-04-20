@@ -4,9 +4,9 @@
 Make The Sound is an extension for Visual Studio that adds sounds to your IDE.  
 Currently extension adds audio warnings for this events:
 - save (floppy disk sound effect)
-- save all (floppy disk sound effect, longer )
+- save all (floppy disk sound effect, longer)
 - build failed (cartoon record scratch sound effect)
-- build succeed (checkpoint sound effect from vintage games)
+- build succeeded (checkpoint sound effect from vintage games)
 - breakpoint hits while debugging (arrow hits target, cartoon sound effect)
 - building (oldschool disk read, low sound volume)
 - exception (failed sound effect from cartoon)

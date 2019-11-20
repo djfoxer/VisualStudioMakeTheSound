@@ -21,6 +21,42 @@ namespace djfoxer.VisualStudio.MakeTheSound.Tests
         }
 
         [TestMethod]
+        public void CheckFileExists()
+        {
+            Enum.GetValues(typeof(IDEEventType)).Cast<IDEEventType>().Where(x => x != IDEEventType.Unknown).ToList().ForEach(x =>
+            {
+                Assert.IsTrue(File.Exists(IDEEventTypeMapper.IDEEventTypeToSoundPath(x)));
+            });
+        }
+
+        [TestMethod]
+        public void SoundIsOk()
+        {
+            Enum.GetValues(typeof(IDEEventType)).Cast<IDEEventType>().Where(x => x != IDEEventType.Unknown).ToList().ForEach(x =>
+            {
+                Assert.IsTrue(File.Exists(IDEEventTypeMapper.IDEEventTypeToSoundPath(x)));
+            });
+        }
+
+        [TestMethod]
+        public void PlayButtonIsPlaying()
+        {
+            Enum.GetValues(typeof(IDEEventType)).Cast<IDEEventType>().Where(x => x != IDEEventType.Unknown).ToList().ForEach(x =>
+            {
+                Assert.IsTrue(File.Exists(IDEEventTypeMapper.IDEEventTypeToSoundPath(x)));
+            });
+        }
+
+        [TestMethod]
+        public void PauseIsWorking()
+        {
+            Enum.GetValues(typeof(IDEEventType)).Cast<IDEEventType>().Where(x => x != IDEEventType.Unknown).ToList().ForEach(x =>
+            {
+                Assert.IsTrue(File.Exists(IDEEventTypeMapper.IDEEventTypeToSoundPath(x)));
+            });
+        }
+
+        [TestMethod]
         public void CheckAudioFiles()
         {
             Enum.GetValues(typeof(IDEEventType)).Cast<IDEEventType>().Where(x => x != IDEEventType.Unknown).ToList().ForEach(x =>

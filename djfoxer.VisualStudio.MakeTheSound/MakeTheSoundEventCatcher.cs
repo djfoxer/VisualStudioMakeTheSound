@@ -100,7 +100,10 @@ namespace djfoxer.VisualStudio.MakeTheSound
 
         private void DebuggerEvents_OnEnterBreakMode(dbgEventReason Reason, ref dbgExecutionAction ExecutionAction)
         {
-            SetSoundForSingleEvent(IDEEventType.Breakepoint, false);
+            if (Reason == dbgEventReason.dbgEventReasonBreakpoint)
+            {
+                SetSoundForSingleEvent(IDEEventType.Breakepoint, false);
+            }
         }
 
         private void Building_OnBuildBegin(vsBuildScope Scope, vsBuildAction Action)

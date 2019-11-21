@@ -20,6 +20,9 @@ Feel free to add your feedback here: [Issues](https://github.com/djfoxer/VisualS
 
 #### Changelog:
 
+**0.2.2**
+- fix breakpoint sound [#2](https://github.com/djfoxer/VisualStudioMakeTheSound/issues/2)
+
 **0.2.1**
 - new sounds effects:
   * breakpoint hits while debugging

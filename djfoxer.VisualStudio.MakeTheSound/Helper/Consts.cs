@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace djfoxer.VisualStudio.MakeTheSound.Helper
+﻿namespace djfoxer.VisualStudio.MakeTheSound.Helper
 {
     public static class Consts
     {

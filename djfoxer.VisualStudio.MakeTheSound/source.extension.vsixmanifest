@@ -7,7 +7,7 @@
         <Icon>Resources\MakeTheSound.ico</Icon>
         <Tags>sound events music effect build save warnings</Tags>
     </Metadata>
-    <Installation InstalledByMsi="true">
+    <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,)">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>

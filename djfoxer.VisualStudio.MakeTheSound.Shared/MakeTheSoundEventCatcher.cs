@@ -6,6 +6,7 @@ using EnvDTE80;
 using Microsoft;
 using Microsoft.VisualStudio.Shell;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -61,6 +62,7 @@ namespace djfoxer.VisualStudio.MakeTheSound
             return this;
         }
 
+        [SuppressMessage("Usage", "VSTHRD010:Invoke single-threaded types on Main thread", Justification = "SwitchToMainThreadAsync added above")]
         private async System.Threading.Tasks.Task AddActionAsync(IDEEventType iDEEventType)
         {
             var sourceType = GetIDEEventSource(iDEEventType);
@@ -113,19 +115,19 @@ namespace djfoxer.VisualStudio.MakeTheSound
 
         private void Building_OnBuildDone(vsBuildScope Scope, vsBuildAction Action)
         {
-            System.Threading.Tasks.Task.Run(async () =>
-            {
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                DamnGoodPlayer.Instance.StopLoop();
-                if (_dte.Solution.SolutionBuild.LastBuildInfo != 0)
-                {
-                    DamnGoodPlayer.Instance.PlaySound(IDEEventType.BuildFails);
-                }
-                else
-                {
-                    DamnGoodPlayer.Instance.PlaySound(IDEEventType.BuildSuccess);
-                }
-            }).ConfigureAwait(false);
+            _ = System.Threading.Tasks.Task.Run(async () =>
+              {
+                  await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                  DamnGoodPlayer.Instance.StopLoop();
+                  if (_dte.Solution.SolutionBuild.LastBuildInfo != 0)
+                  {
+                      DamnGoodPlayer.Instance.PlaySound(IDEEventType.BuildFails);
+                  }
+                  else
+                  {
+                      DamnGoodPlayer.Instance.PlaySound(IDEEventType.BuildSuccess);
+                  }
+              }).ConfigureAwait(false);
         }
 
         private IDEEventSourceType GetIDEEventSource(IDEEventType iDEEventType)
@@ -137,11 +139,11 @@ namespace djfoxer.VisualStudio.MakeTheSound
 
         private void SetSoundForSingleEvent(IDEEventType iDEEventType, bool loop)
         {
-            System.Threading.Tasks.Task.Run(async () =>
-            {
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                DamnGoodPlayer.Instance.PlaySound(iDEEventType, loop);
-            }).ConfigureAwait(false);
+            _ = System.Threading.Tasks.Task.Run(async () =>
+              {
+                  await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                  DamnGoodPlayer.Instance.PlaySound(iDEEventType, loop);
+              }).ConfigureAwait(false);
         }
 
         private async System.Threading.Tasks.Task SetEventForActionAsync(IDEEventType iDEEventType)

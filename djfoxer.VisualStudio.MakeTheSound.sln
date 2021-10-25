@@ -1,26 +1,53 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.489
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31815.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "djfoxer.VisualStudio.MakeTheSound", "djfoxer.VisualStudio.MakeTheSound\djfoxer.VisualStudio.MakeTheSound.csproj", "{AB01D537-353A-47A9-AFF1-CBD8254D3B9F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "djfoxer.VisualStudio.MakeTheSound.Tests", "djfoxer.VisualStudio.MakeTheSound.Tests\djfoxer.VisualStudio.MakeTheSound.Tests.csproj", "{F4DDEBE9-B7B2-4981-BC77-BFF09C8BCCB7}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "djfoxer.VisualStudio.MakeTheSound.Shared", "djfoxer.VisualStudio.MakeTheSound.Shared\djfoxer.VisualStudio.MakeTheSound.Shared.shproj", "{DE7FB653-6C47-468B-8608-61C883DE263E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "djfoxer.VisualStudio.MakeTheSound.Legacy16", "djfoxer.VisualStudio.MakeTheSound.Legacy16\djfoxer.VisualStudio.MakeTheSound.Legacy16.csproj", "{611F045C-CBE0-4BF3-8DC7-492DECCE39AA}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		djfoxer.VisualStudio.MakeTheSound.Shared\djfoxer.VisualStudio.MakeTheSound.Shared.projitems*{611f045c-cbe0-4bf3-8dc7-492decce39aa}*SharedItemsImports = 4
+		djfoxer.VisualStudio.MakeTheSound.Shared\djfoxer.VisualStudio.MakeTheSound.Shared.projitems*{ab01d537-353a-47a9-aff1-cbd8254d3b9f}*SharedItemsImports = 4
+		djfoxer.VisualStudio.MakeTheSound.Shared\djfoxer.VisualStudio.MakeTheSound.Shared.projitems*{de7fb653-6c47-468b-8608-61c883de263e}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{AB01D537-353A-47A9-AFF1-CBD8254D3B9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB01D537-353A-47A9-AFF1-CBD8254D3B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB01D537-353A-47A9-AFF1-CBD8254D3B9F}.Debug|x86.ActiveCfg = Debug|x86
+		{AB01D537-353A-47A9-AFF1-CBD8254D3B9F}.Debug|x86.Build.0 = Debug|x86
 		{AB01D537-353A-47A9-AFF1-CBD8254D3B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB01D537-353A-47A9-AFF1-CBD8254D3B9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB01D537-353A-47A9-AFF1-CBD8254D3B9F}.Release|x86.ActiveCfg = Release|x86
+		{AB01D537-353A-47A9-AFF1-CBD8254D3B9F}.Release|x86.Build.0 = Release|x86
 		{F4DDEBE9-B7B2-4981-BC77-BFF09C8BCCB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F4DDEBE9-B7B2-4981-BC77-BFF09C8BCCB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4DDEBE9-B7B2-4981-BC77-BFF09C8BCCB7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F4DDEBE9-B7B2-4981-BC77-BFF09C8BCCB7}.Debug|x86.Build.0 = Debug|Any CPU
 		{F4DDEBE9-B7B2-4981-BC77-BFF09C8BCCB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4DDEBE9-B7B2-4981-BC77-BFF09C8BCCB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4DDEBE9-B7B2-4981-BC77-BFF09C8BCCB7}.Release|x86.ActiveCfg = Release|Any CPU
+		{F4DDEBE9-B7B2-4981-BC77-BFF09C8BCCB7}.Release|x86.Build.0 = Release|Any CPU
+		{611F045C-CBE0-4BF3-8DC7-492DECCE39AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{611F045C-CBE0-4BF3-8DC7-492DECCE39AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{611F045C-CBE0-4BF3-8DC7-492DECCE39AA}.Debug|x86.ActiveCfg = Debug|x86
+		{611F045C-CBE0-4BF3-8DC7-492DECCE39AA}.Debug|x86.Build.0 = Debug|x86
+		{611F045C-CBE0-4BF3-8DC7-492DECCE39AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{611F045C-CBE0-4BF3-8DC7-492DECCE39AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{611F045C-CBE0-4BF3-8DC7-492DECCE39AA}.Release|x86.ActiveCfg = Release|x86
+		{611F045C-CBE0-4BF3-8DC7-492DECCE39AA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

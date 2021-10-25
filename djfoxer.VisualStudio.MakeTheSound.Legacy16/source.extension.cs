@@ -7,8 +7,8 @@ namespace djfoxer.VisualStudio.MakeTheSound
 {
     static class Vsix
     {
-        public const string Id = "cb63fe1e-356e-426d-abdf-9237436faf11";
-        public const string Name = "Make The Sound";
+        public const string Id = "8ddbb59a-b1f8-4fb5-af78-1313389d5dfe";
+        public const string Name = "Make The Sound Legacy";
         public const string Description = @"Make The Sound is an extension for Visual Studio that adds sounds to your IDE.";
         public const string Language = "en-US";
         public const string Version = "0.3.0";

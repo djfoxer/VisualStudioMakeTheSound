@@ -15,10 +15,16 @@ All sound effects can be enabled/disabled in options window:
 
 <img src="https://raw.githubusercontent.com/djfoxer/VisualStudioMakeTheSound/master/Images/optionsDialog.PNG" />
 
-Link to Visual Studio Marketplace: [Make The Sound](https://marketplace.visualstudio.com/items?itemName=djfoxer.MakeTheSound)  
+Links to Visual Studio Marketplace: 
+- [Make The Sound](https://marketplace.visualstudio.com/items?itemName=djfoxer.MakeTheSound) for Visual Studio 2022
+- [Make The Sound Legacy](https://marketplace.visualstudio.com/items?itemName=djfoxer.MakeTheSoundLegacy) for Visual Studio 2019 and older
+
 Feel free to add your feedback here: [Issues](https://github.com/djfoxer/VisualStudioMakeTheSound/issues)
 
 #### Changelog:
+
+**0.3.0**
+- added Visual Studio 2022 support [#6](https://github.com/djfoxer/VisualStudioMakeTheSound/issues/6)
 
 **0.2.2**
 - fix breakpoint sound [#2](https://github.com/djfoxer/VisualStudioMakeTheSound/issues/2)

@@ -1,5 +1,4 @@
 ﻿using djfoxer.VisualStudio.MakeTheSound.Events;
-using djfoxer.VisualStudio.MakeTheSound.Options;
 using System.Media;
 
 namespace djfoxer.VisualStudio.MakeTheSound.Player

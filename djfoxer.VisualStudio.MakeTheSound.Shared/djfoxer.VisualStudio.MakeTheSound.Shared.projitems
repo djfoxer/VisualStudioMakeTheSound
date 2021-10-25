@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>de7fb653-6c47-468b-8608-61c883de263e</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>djfoxer.VisualStudio.MakeTheSound.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Events\IDEEventSourceAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\IDEEventSourceType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\IDEEventType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\IDEEventTypeMapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\Consts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MakeTheSoundEventCatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MakeTheSoundPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\OptionsPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Player\DamnGoodPlayer.cs" />
+  </ItemGroup>
+</Project>

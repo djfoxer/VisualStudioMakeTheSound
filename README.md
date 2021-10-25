@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/djfoxer/VisualStudioMakeTheSound/master/djfoxer.VisualStudio.MakeTheSound/Resources/MakeTheSound.ico" width="100" height="100" /> Make The Sound
+# <img src="https://raw.githubusercontent.com/djfoxer/VisualStudioMakeTheSound/master/Shared\/Resources/MakeTheSound.ico" width="100" height="100" /> Make The Sound
 #### Extension for Visual Studio
 
 Make The Sound is an extension for Visual Studio that adds sounds to your IDE.  

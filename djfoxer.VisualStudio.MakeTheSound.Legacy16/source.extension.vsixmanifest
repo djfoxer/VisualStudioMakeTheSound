@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="8ddbb59a-b1f8-4fb5-af78-1313389d5dfe" Version="0.3.0" Language="en-US" Publisher="djfoxer" />
+        <Identity Id="8ddbb59a-b1f8-4fb5-af78-1313389d5dfe" Version="0.4.0" Language="en-US" Publisher="djfoxer" />
         <DisplayName>Make The Sound Legacy</DisplayName>
         <Description xml:space="preserve">Make The Sound is an extension for Visual Studio that adds sounds to your IDE. For Visual Studio 2019 and older.</Description>
         <Icon>Resources\MakeTheSound.ico</Icon>

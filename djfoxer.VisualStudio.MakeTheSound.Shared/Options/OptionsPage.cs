@@ -1,33 +1,47 @@
 ﻿using djfoxer.VisualStudio.MakeTheSound.Events;
 using djfoxer.VisualStudio.MakeTheSound.Helper;
+using djfoxer.VisualStudio.MakeTheSound.Shared.Options;
 using Microsoft.VisualStudio.Shell;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 
 namespace djfoxer.VisualStudio.MakeTheSound.Options
 {
     public class OptionsPage : DialogPage
     {
-        public OptionsPage()
+        public Dictionary<IDEEventType, EventSoundConfig> _eventTypeConfig = SettingsManagerHelper.GetDefaultValues();
+
+        public override void SaveSettingsToStorage()
         {
-            Enum.GetValues(typeof(IDEEventType)).Cast<IDEEventType>().ToList().ForEach(x =>
-            {
-                _eventTypeConfig.Add(x, true);
-            });
-
-            //I know, redundant
-            EnableAudioBreakpoint = EnableAudioBuildFails = EnableAudioBuilding =
-            EnableBuildSuccessed = EnableAudioException = EnableAudioFileSave = EnableAudioFileSaveAll = true;
-
+            base.SaveSettingsToStorage();
+            SettingsManagerHelper.SaveData(_eventTypeConfig);
         }
-        
-        private Dictionary<IDEEventType, bool> _eventTypeConfig = new Dictionary<IDEEventType, bool>();
+
+        public override void LoadSettingsFromStorage()
+        {
+            base.LoadSettingsFromStorage();
+            _eventTypeConfig = SettingsManagerHelper.LoadData();
+        }
 
         public bool IsAudioActive(IDEEventType iDEEventType)
+            => _eventTypeConfig[iDEEventType].IsEnabled;
+
+        public bool HasCustomSoundPath(IDEEventType iDEEventType)
+            => !_eventTypeConfig[iDEEventType].IsDefaultSound;
+
+        public string GetCustomSoundPath(IDEEventType iDEEventType)
+            => _eventTypeConfig[iDEEventType].IsDefaultSound ? string.Empty : _eventTypeConfig[iDEEventType].CustomPath;
+
+        public void SetCustomPath(IDEEventType iDEEventType, string customPath)
         {
-            return _eventTypeConfig[iDEEventType];
+            _eventTypeConfig[iDEEventType].CustomPath = customPath;
+            _eventTypeConfig[iDEEventType].IsDefaultSound = false;
+        }
+
+        public void SetDefaultSound(IDEEventType iDEEventType)
+        {
+            _eventTypeConfig[iDEEventType].CustomPath = string.Empty;
+            _eventTypeConfig[iDEEventType].IsDefaultSound = true;
         }
 
         [Category(Consts.OptionSubmenu)]
@@ -37,11 +51,11 @@ namespace djfoxer.VisualStudio.MakeTheSound.Options
         {
             get
             {
-                return _eventTypeConfig[IDEEventType.Breakepoint];
+                return _eventTypeConfig[IDEEventType.Breakepoint].IsEnabled;
             }
             set
             {
-                _eventTypeConfig[IDEEventType.Breakepoint] = value;
+                _eventTypeConfig[IDEEventType.Breakepoint].IsEnabled = value;
             }
         }
 
@@ -52,11 +66,11 @@ namespace djfoxer.VisualStudio.MakeTheSound.Options
         {
             get
             {
-                return _eventTypeConfig[IDEEventType.BuildFails];
+                return _eventTypeConfig[IDEEventType.BuildFails].IsEnabled;
             }
             set
             {
-                _eventTypeConfig[IDEEventType.BuildFails] = value;
+                _eventTypeConfig[IDEEventType.BuildFails].IsEnabled = value;
             }
         }
 
@@ -67,11 +81,11 @@ namespace djfoxer.VisualStudio.MakeTheSound.Options
         {
             get
             {
-                return _eventTypeConfig[IDEEventType.Building];
+                return _eventTypeConfig[IDEEventType.Building].IsEnabled;
             }
             set
             {
-                _eventTypeConfig[IDEEventType.Building] = value;
+                _eventTypeConfig[IDEEventType.Building].IsEnabled = value;
             }
         }
 
@@ -82,11 +96,11 @@ namespace djfoxer.VisualStudio.MakeTheSound.Options
         {
             get
             {
-                return _eventTypeConfig[IDEEventType.BuildSuccess];
+                return _eventTypeConfig[IDEEventType.BuildSuccess].IsEnabled;
             }
             set
             {
-                _eventTypeConfig[IDEEventType.BuildSuccess] = value;
+                _eventTypeConfig[IDEEventType.BuildSuccess].IsEnabled = value;
             }
         }
 
@@ -97,11 +111,11 @@ namespace djfoxer.VisualStudio.MakeTheSound.Options
         {
             get
             {
-                return _eventTypeConfig[IDEEventType.Exception];
+                return _eventTypeConfig[IDEEventType.Exception].IsEnabled;
             }
             set
             {
-                _eventTypeConfig[IDEEventType.Exception] = value;
+                _eventTypeConfig[IDEEventType.Exception].IsEnabled = value;
             }
         }
 
@@ -112,11 +126,11 @@ namespace djfoxer.VisualStudio.MakeTheSound.Options
         {
             get
             {
-                return _eventTypeConfig[IDEEventType.FileSave];
+                return _eventTypeConfig[IDEEventType.FileSave].IsEnabled;
             }
             set
             {
-                _eventTypeConfig[IDEEventType.FileSave] = value;
+                _eventTypeConfig[IDEEventType.FileSave].IsEnabled = value;
             }
         }
 
@@ -127,11 +141,11 @@ namespace djfoxer.VisualStudio.MakeTheSound.Options
         {
             get
             {
-                return _eventTypeConfig[IDEEventType.FileSaveAll];
+                return _eventTypeConfig[IDEEventType.FileSaveAll].IsEnabled;
             }
             set
             {
-                _eventTypeConfig[IDEEventType.FileSaveAll] = value;
+                _eventTypeConfig[IDEEventType.FileSaveAll].IsEnabled = value;
             }
         }
 

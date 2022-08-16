@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Threading.Tasks;
 using djfoxer.VisualStudio.MakeTheSound.Helper;
 using djfoxer.VisualStudio.MakeTheSound.Options;
+using djfoxer.VisualStudio.MakeTheSound.Shared.Options;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
@@ -31,6 +31,7 @@ namespace djfoxer.VisualStudio.MakeTheSound
     [Guid(Vsix.Id)]
     [ProvideAutoLoad(UIContextGuids.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideOptionPage(typeof(OptionsPage), Vsix.Name, Consts.OptionSubmenu, 0, 0, true)]
+    [ProvideOptionPage(typeof(CustomSoundOptionsPage), Vsix.Name, Consts.CustomSoundsOptionSubmenu, 0, 0, true)]
 
     public sealed class MakeTheSoundPackage : AsyncPackage
     {
@@ -60,7 +61,10 @@ namespace djfoxer.VisualStudio.MakeTheSound
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            await MakeTheSoundEventCatcher.Instance.InitAsync(this, (OptionsPage)GetDialogPage(typeof(OptionsPage)));
+            await MakeTheSoundEventCatcher.Instance.InitAsync(this,
+                (OptionsPage)GetDialogPage(typeof(OptionsPage)),
+                (CustomSoundOptionsPage)GetDialogPage(typeof(CustomSoundOptionsPage))
+                );
         }
 
         #endregion

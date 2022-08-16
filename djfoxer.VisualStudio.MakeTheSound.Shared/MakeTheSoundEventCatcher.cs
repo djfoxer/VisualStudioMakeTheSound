@@ -1,6 +1,7 @@
 ﻿using djfoxer.VisualStudio.MakeTheSound.Events;
 using djfoxer.VisualStudio.MakeTheSound.Options;
 using djfoxer.VisualStudio.MakeTheSound.Player;
+using djfoxer.VisualStudio.MakeTheSound.Shared.Options;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft;
@@ -23,7 +24,7 @@ namespace djfoxer.VisualStudio.MakeTheSound
         private DebuggerEvents _debuggerEvents;
         private AsyncPackage _package;
         private static MakeTheSoundEventCatcher _instance;
-
+        public static string path = "";
         private MakeTheSoundEventCatcher()
         {
 
@@ -32,8 +33,9 @@ namespace djfoxer.VisualStudio.MakeTheSound
         public static MakeTheSoundEventCatcher Instance => _instance ?? (_instance = new MakeTheSoundEventCatcher());
 
         public OptionsPage OptionsPage { get; private set; }
+        public CustomSoundOptionsPage CustomSoundOptionsPage { get; private set; }
 
-        public async Task<MakeTheSoundEventCatcher> InitAsync(AsyncPackage package, OptionsPage optionsPage)
+        public async Task<MakeTheSoundEventCatcher> InitAsync(AsyncPackage package, OptionsPage optionsPage, CustomSoundOptionsPage customSoundOptionsPage)
         {
             if (_package != null)
             {
@@ -41,6 +43,7 @@ namespace djfoxer.VisualStudio.MakeTheSound
             }
 
             OptionsPage = optionsPage;
+            CustomSoundOptionsPage = customSoundOptionsPage;
 
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             _package = package;

@@ -10,10 +10,15 @@ Currently extension adds audio warnings for this events:
 - breakpoint hits while debugging (arrow hits target, cartoon sound effect)
 - building (oldschool disk read, low sound volume)
 - exception (failed sound effect from cartoon)
+- default sound effects could be changed by selecting wav file from your disk storage
 
 All sound effects can be enabled/disabled in options window:  
 
 <img src="https://raw.githubusercontent.com/djfoxer/VisualStudioMakeTheSound/master/Images/optionsDialog.PNG" />
+
+You can also change any of the sound effects by selecting WAV file from your disk storage:
+
+<img src="https://raw.githubusercontent.com/djfoxer/VisualStudioMakeTheSound/master/Images/optionsCustom.PNG" />
 
 Links to Visual Studio Marketplace: 
 - [Make The Sound](https://marketplace.visualstudio.com/items?itemName=djfoxer.MakeTheSound) for Visual Studio 2022
@@ -22,6 +27,9 @@ Links to Visual Studio Marketplace:
 Feel free to add your feedback here: [Issues](https://github.com/djfoxer/VisualStudioMakeTheSound/issues)
 
 #### Changelog:
+
+**0.4.0**
+- added support for customizing sound effects in new option window (wav files) [#5](https://github.com/djfoxer/VisualStudioMakeTheSound/issues/5)
 
 **0.3.0**
 - added Visual Studio 2022 support [#6](https://github.com/djfoxer/VisualStudioMakeTheSound/issues/6)

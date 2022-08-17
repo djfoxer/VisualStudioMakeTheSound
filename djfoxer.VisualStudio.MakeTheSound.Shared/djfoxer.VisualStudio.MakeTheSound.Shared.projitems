@@ -14,9 +14,22 @@
     <Compile Include="$(MSBuildThisFileDirectory)Events\IDEEventType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\IDEEventTypeMapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\Consts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MakeTheSoundEventCatcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MakeTheSoundPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\CustomSoundOptions.xaml.cs">
+      <DependentUpon>CustomSoundOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Options\CustomSoundOptionsPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\EventSoundConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Options\OptionsPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\SettingsManagerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Player\DamnGoodPlayer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Options\CustomSoundOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

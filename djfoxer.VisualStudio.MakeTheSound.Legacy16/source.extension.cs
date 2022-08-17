@@ -11,7 +11,7 @@ namespace djfoxer.VisualStudio.MakeTheSound
         public const string Name = "Make The Sound Legacy";
         public const string Description = @"Make The Sound is an extension for Visual Studio that adds sounds to your IDE.";
         public const string Language = "en-US";
-        public const string Version = "0.3.0";
+        public const string Version = "0.4.0";
         public const string Author = "djfoxer";
         public const string Tags = "sound events music effect build save warnings";
     }

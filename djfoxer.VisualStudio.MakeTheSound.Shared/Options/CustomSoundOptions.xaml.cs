@@ -23,8 +23,7 @@ namespace djfoxer.VisualStudio.MakeTheSound.Shared.Options
         internal CustomSoundOptionsPage customSoundOptionsPage;
 
         public void Initialize()
-        {
-            
+        {        
             var dock = new WrapPanel()
             {
                 Orientation = Orientation.Vertical

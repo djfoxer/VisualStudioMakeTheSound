@@ -20,8 +20,6 @@ namespace djfoxer.VisualStudio.MakeTheSound.Shared.Options
                 page.Initialize();
                 return page;
             }
-        }
-
-        
+        } 
     }
 }

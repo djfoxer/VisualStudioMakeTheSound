@@ -22,7 +22,7 @@ namespace djfoxer.VisualStudio.MakeTheSound.Events
                     break;
             }
 
-            if (MakeTheSoundEventCatcher.Instance.OptionsPage.HasCustomSoundPath(iDEEventType))
+            if (MakeTheSoundEventCatcher.Instance.OptionsPage?.HasCustomSoundPath(iDEEventType) ?? false)
             {
                 return MakeTheSoundEventCatcher.Instance.OptionsPage.GetCustomSoundPath(iDEEventType);
             }

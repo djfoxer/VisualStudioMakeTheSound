@@ -11,6 +11,5 @@ namespace djfoxer.VisualStudio.MakeTheSound.Shared.Helper
         => typeof(IDEEventType).GetMember(iDEEventType.ToString())
                    .First()
                   .GetCustomAttribute<NameAttribute>().Name;
-
     }
 }

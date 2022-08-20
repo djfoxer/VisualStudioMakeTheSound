@@ -29,5 +29,8 @@ namespace djfoxer.VisualStudio.MakeTheSound.Events
         [IDEEventSource(IDEEventSourceType.DteEvent)]
         [Name(Consts.OptionsEnableAudioExceptionDescription)]
         Exception = 7,
+        [IDEEventSource(IDEEventSourceType.DteEvent)]
+        [Name(Consts.OptionsEnableAudioEntryDebugModeDescription)]
+        DebugEntry = 8,
     }
 }

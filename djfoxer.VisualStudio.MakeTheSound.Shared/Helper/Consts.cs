@@ -27,5 +27,8 @@
 
         public const string OptionsEnableAudioFileSaveAllText = "Enable save all files";
         public const string OptionsEnableAudioFileSaveAllDescription = "Save all files sound effect";
+
+        public const string OptionsEnableAudioEntryDebugMode = "Enable entry debug mode";
+        public const string OptionsEnableAudioEntryDebugModeDescription = "Entry debug mode";
     }
 }

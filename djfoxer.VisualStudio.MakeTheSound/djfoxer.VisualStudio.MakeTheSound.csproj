@@ -85,6 +85,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="..\Shared\Audio\DebugEntry.wav">
+      <Link>Audio\DebugEntry.wav</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\Shared\Audio\Exception.wav">
       <Link>Audio\Exception.wav</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

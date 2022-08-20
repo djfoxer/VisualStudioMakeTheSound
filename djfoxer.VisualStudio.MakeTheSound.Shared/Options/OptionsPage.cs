@@ -60,6 +60,21 @@ namespace djfoxer.VisualStudio.MakeTheSound.Options
         }
 
         [Category(Consts.OptionSubmenu)]
+        [DisplayName(Consts.OptionsEnableAudioEntryDebugMode)]
+        [Description(Consts.OptionsEnableAudioEntryDebugModeDescription)]
+        public bool EnableAudioEntryDebugMode
+        {
+            get
+            {
+                return _eventTypeConfig[IDEEventType.DebugEntry].IsEnabled;
+            }
+            set
+            {
+                _eventTypeConfig[IDEEventType.DebugEntry].IsEnabled = value;
+            }
+        }
+
+        [Category(Consts.OptionSubmenu)]
         [DisplayName(Consts.OptionsEnableAudioBuildFailsText)]
         [Description(Consts.OptionsEnableAudioBuildFailsDescription)]
         public bool EnableAudioBuildFails

@@ -8,7 +8,9 @@ using Microsoft;
 using Microsoft.VisualStudio.Shell;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.IO.Packaging;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -49,6 +51,7 @@ namespace djfoxer.VisualStudio.MakeTheSound
 
             _dte = (DTE2)await _package.GetServiceAsync(typeof(DTE));
             Assumes.Present(_dte);
+            
 
             _events = _dte.Events as Events2;
             _buildEvents = _events.BuildEvents;
@@ -60,6 +63,7 @@ namespace djfoxer.VisualStudio.MakeTheSound
             await AddActionAsync(IDEEventType.Building);
             await AddActionAsync(IDEEventType.Breakepoint);
             await AddActionAsync(IDEEventType.Exception);
+            await AddActionAsync(IDEEventType.DebugEntry);
 
             return this;
         }
@@ -82,14 +86,25 @@ namespace djfoxer.VisualStudio.MakeTheSound
                 }
                 else if (iDEEventType == IDEEventType.Breakepoint)
                 {
-                    _debuggerEvents.OnEnterBreakMode += DebuggerEvents_OnEnterBreakMode; ;
+                    _debuggerEvents.OnEnterBreakMode += DebuggerEvents_OnEnterBreakMode;
+                }
+                else if (iDEEventType == IDEEventType.DebugEntry)
+                {
+                    _debuggerEvents.OnEnterRunMode += _debuggerEvents_OnEnterRunMode;
                 }
                 else if (iDEEventType == IDEEventType.Exception)
                 {
                     _debuggerEvents.OnExceptionNotHandled += DebuggerEvents_OnExceptionNotHandled;
-                    _debuggerEvents.OnExceptionThrown += DebuggerEvents_OnExceptionThrown; ;
+                    _debuggerEvents.OnExceptionThrown += DebuggerEvents_OnExceptionThrown;
                 }
+
+                
             }
+        }
+
+        private void _debuggerEvents_OnEnterRunMode(dbgEventReason Reason)
+        {
+            SetSoundForSingleEvent(IDEEventType.DebugEntry, false);
         }
 
         private void DebuggerEvents_OnExceptionThrown(string ExceptionType, string Name, int Code, string Description, ref dbgExceptionAction ExceptionAction)

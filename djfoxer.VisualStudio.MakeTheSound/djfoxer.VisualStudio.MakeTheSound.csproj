@@ -144,7 +144,7 @@
       <Version>17.0.31902.203</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
-      <Version>6.0.5</Version>
+      <Version>8.0.4</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="..\djfoxer.VisualStudio.MakeTheSound.Shared\djfoxer.VisualStudio.MakeTheSound.Shared.projitems" Label="Shared" />
